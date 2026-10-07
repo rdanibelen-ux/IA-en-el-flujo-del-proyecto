@@ -62,8 +62,8 @@ Este proyecto está bajo la Licencia MIT.
 
 `Mi versión editada`: 
 
-• Cambio 1 : Especificación técnica del motor de Base de Datos: Modifiqué la sección de herramientas para detallar el uso de SQL Server (T-SQL) y la base de datos Ventas_Tech_DB. El texto original mencionaba generalidades de SQL; especificar el entorno exacto evita que un analista nuevo intente correr las consultas en motores incompatibles como MySQL o PostgreSQL.
+• Cambio 1 : Especificación técnica del motor de Base de Datos: Modifiqué la sección de herramientas para detallar el uso de SQL Server (T-SQL) y la base de datos `Ventas_Tech_DB`. El texto original mencionaba generalidades de SQL; especificar el entorno exacto evita que un analista nuevo intente correr las consultas en motores incompatibles como MySQL o PostgreSQL.
 
 • Cambio 2 : Inclusión de reglas de negocio para los Canales (`UNION ALL`): Añadí una sección explicativa sobre cómo se divide el consolidado de ventas por canal. La propuesta omitía detallar que los días 1 al 10 corresponden al canal Presencial y los días posteriores al 10 al canal Online, una regla de negocio crítica que debe quedar registrada para cualquiera que audite el código.
 
-• Cambio 3 : Creación del Diccionario de Datos para Clientes/Productos sin Ventas: Incorporé una breve guía explicativa sobre las consultas de exclusión (`LEFT JOIN` con filtros `IS NULL`). Esto asegura que el analista entienda de inmediato que el reporte sirve para identificar stock estancado y usuarios inactivos para campañas de marketing directas.
+• Cambio 3 : Inclusión de lógica de exclusión para Clientes/Productos sin Ventas: Incorporé una breve guía explicativa sobre las consultas de exclusión (`LEFT JOIN` con filtros `IS NULL`). Esto asegura que el analista entienda de inmediato el propósito comercial del reporte, el cual sirve para identificar stock estancado y usuarios inactivos para campañas de marketing directo.
