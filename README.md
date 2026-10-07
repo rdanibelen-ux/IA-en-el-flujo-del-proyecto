@@ -1,28 +1,63 @@
-# IA-en-el-flujo-del-proyecto
-# Proyecto RetailPro
+# RetailPro - Sistema de Gestión y Análisis de Ventas
 
-Este repositorio contiene los scripts de bases de datos y las consultas analíticas para la plataforma RetailPro. El objetivo de este proyecto es analizar el rendimiento de las ventas, identificar el comportamiento de los clientes y optimizar los modelos de datos internos.
+**RetailPro** es una solución de base de datos relacional diseñada para centralizar las operaciones comerciales, analizar el rendimiento de las ventas, identificar el comportamiento de los clientes y optimizar los modelos de datos internos de la compañía.
 
-## Herramientas utilizadas
-* SQL
-* Bases de datos relacionales
-* Análisis de datos
+---
 
-## Estructura del repositorio
-* `/scripts`: Carpeta que contiene todos los archivos SQL.
-* `README.md`: Documentación del proyecto.
+## 🛠️ Herramientas Utilizadas
 
-## Cómo ejecutar los scripts
-1. Abra su herramienta de gestión de bases de datos.
-2. Conéctese a su servidor.
-3. Cree una nueva base de datos.
-4. Copie y pegue el contenido de los scripts.
-5. Ejecute las consultas para ver los resultados.
+*   **Motor de Base de Datos:** [Microsoft SQL Server](https://microsoft.com) (T-SQL) administrado mediante [SQL Server Management Studio (SSMS)](https://microsoft.com).
+*   **Base de Datos del Proyecto:** `Ventas_Tech_DB`
+*   **Enfoque de Análisis:** SQL Avanzado, consultas de exclusión y consolidación de reportes comerciales.
 
-## Contribuciones
-Por favor, abra un problema o envíe una solicitud de extracción si desea sugerir mejoras a las consultas de optimización SQL.
+---
 
-## Licencia
+## 📁 Estructura del Repositorio
+
+*   `📂 /scripts`: Carpeta contenedora de todos los archivos SQL organizados de manera secuencial.
+    *   `01_schema.sql`: Creación de la base de datos `Ventas_Tech_DB` y sus tablas.
+    *   `02_seeds.sql`: Carga de datos iniciales.
+    *   `03_analytics_queries.sql`: Consultas analíticas y reportes de negocio.
+*   `📄 README.md`: Documentación técnica del proyecto (este archivo).
+
+---
+
+## 🧠 Reglas de Negocio Clave
+
+Para comprender la lógica de los reportes analíticos incluidos en `/scripts`, un analista nuevo debe tener en cuenta los siguientes criterios corporativos implantados en las consultas:
+
+1.  **Consolidación de Canales de Venta (`UNION ALL`):** Las ventas se unifican bajo una regla temporal estricta:
+    *   **Canal Presencial:** Registros correspondientes a los **días 1 al 10** de cada mes.
+    *   **Canal Online:** Registros de los **días posteriores al 10** de cada mes.
+2.  **Identificación de Inactividad y Stock Estancado:** Las consultas analíticas utilizan estructuras `LEFT JOIN` con filtros `IS NULL` aplicados específicamente para extraer de forma inmediata:
+    *   **Clientes inactivos:** Usuarios registrados que nunca han efectuado una compra (orientado a campañas de marketing directo).
+    *   **Stock estancado:** Productos del catálogo sin ventas asociadas.
+
+---
+
+## 🚀 Guía de Ejecución para Nuevos Analistas
+
+Siga estos pasos en orden para desplegar el entorno localmente y evitar errores de compatibilidad:
+
+### 1. Preparar el Entorno
+1. Abra **SQL Server Management Studio (SSMS)** y conéctese a su instancia de servidor local.
+2. Clone este repositorio o descargue la carpeta de archivos SQL.
+
+### 2. Despliegue de la Base de Datos
+Abra y ejecute secuencialmente los scripts de la carpeta `/scripts`:
+
+1.  **Crear la estructura:** Ejecute `01_schema.sql`. Esto creará la base de datos `Ventas_Tech_DB`, sus tablas correspondientes y las relaciones de integridad.
+2.  **Poblar los datos:** Ejecute `02_seeds.sql` para cargar los registros de prueba de clientes, productos y transacciones.
+
+### 3. Ejecución de Consultas de Negocio
+Abra el archivo `03_analytics_queries.sql` donde podrá correr los bloques de código analítico para auditar los canales de venta (Presencial/Online) y extraer los reportes de stock o clientes inactivos.
+
+---
+
+## 🤝 Contribuciones
+Por favor, abra un *Issue* o envíe un *Pull Request* si desea sugerir mejoras a las consultas de optimización SQL.
+
+## 📄 Licencia
 Este proyecto está bajo la Licencia MIT.
 
 `Mi versión editada`: 
